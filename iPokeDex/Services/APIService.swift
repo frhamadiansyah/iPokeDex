@@ -18,9 +18,6 @@ protocol Requestable {
 
 struct APIService: Requestable {
     
-    static let shared = APIService()
-    
-
     func make(request: URLRequest, decoder: JSONDecoder) -> AnyPublisher<PokeResponse, Error> {
         URLSession.shared.dataTaskPublisher(for: request)
             .tryMap({ output in

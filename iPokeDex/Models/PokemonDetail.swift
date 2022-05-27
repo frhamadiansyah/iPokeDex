@@ -11,8 +11,8 @@ import SwiftUI
 struct PokemonDetail: Decodable {
     let id: Int
     let name: String
-    let height: Int
-    let weight: Int
+    let height: Float
+    let weight: Float
     
     let types: [PokemonType]
     
@@ -31,8 +31,10 @@ struct PokemonDetail: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(Int.self, forKey: .id)
         name = try container.decode(String.self, forKey: .name)
-        height = try container.decode(Int.self, forKey: .height)
-        weight = try container.decode(Int.self, forKey: .weight)
+        let rawheight = try container.decode(Int.self, forKey: .height)
+        let rawweight = try container.decode(Int.self, forKey: .weight)
+        height = Float(rawheight) / 10 // convert in game unit to m
+        weight = Float(rawweight) / 10 // convert in game unit to kg
         
         let rawTypes = try container.decode([RawPokeType].self, forKey: .types)
         

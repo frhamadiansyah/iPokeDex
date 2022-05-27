@@ -28,7 +28,6 @@ struct DescriptionView: View {
             } placeholder: {
                 ProgressView()
             }
-            .padding(10)
             
             
             //title
@@ -38,14 +37,13 @@ struct DescriptionView: View {
             if let model = vm.model {
                 
                 HStack {
-                    //title
-                    Text("Height : \(model.height)")
-                        .font(.subheadline)
-                        .padding(.horizontal,30)
+                    Text("Height : \(String(format: "%.1f", model.height)) m")
+                        .font(.body)
+                        .padding(.horizontal)
                         Spacer()
-                    Text("Weight : \(model.weight)")
-                        .font(.subheadline)
-                        .padding(.horizontal,50)
+                    Text("Weight : \(String(format: "%.1f", model.weight)) Kg")
+                        .font(.body)
+                        .padding(.horizontal)
                 }
                 .foregroundColor(.black)
                 .padding(10)
@@ -57,7 +55,7 @@ struct DescriptionView: View {
                     RoundedRectangle(cornerRadius: 5)
                         .stroke(.black, lineWidth: 1)
                 }
-                .padding()
+                .padding(.horizontal)
                 
                 // type
                 HStack(spacing: 10) {
@@ -82,9 +80,6 @@ struct DescriptionView: View {
                 .padding()
                 
                 
-                
-                
-                
                 // Status
                 StatsView(vm: vm)
                 
@@ -93,6 +88,7 @@ struct DescriptionView: View {
             
             
         }
+//        .padding(.horizontal)
         .modifier(ErrorHandle(showError: $vm.showError, error: vm.error, completion: { }))
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("#\(vm.poke.pokemonId) \(vm.poke.name.capitalized)")

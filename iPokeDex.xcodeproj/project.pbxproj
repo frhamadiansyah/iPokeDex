@@ -143,8 +143,6 @@
 			children = (
 				7588A765283FDB0200512948 /* Detail */,
 				7588A75C283FD53D00512948 /* Home */,
-				756C9DFB283ED19400A62755 /* DetailViewModel.swift */,
-				756C9E07283F448100A62755 /* HomeViewModel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -187,6 +185,15 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		7588A77A2840A5EC00512948 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				756C9DFB283ED19400A62755 /* DetailViewModel.swift */,
+				756C9E07283F448100A62755 /* HomeViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		75D5DC0F283E2DE300DC6199 = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +217,7 @@
 		75D5DC1A283E2DE300DC6199 /* iPokeDex */ = {
 			isa = PBXGroup;
 			children = (
+				7588A77A2840A5EC00512948 /* ViewModels */,
 				7588A76A284086B700512948 /* Utilities */,
 				756C9DFA283ED14A00A62755 /* Views */,
 				756C9DEC283E60F600A62755 /* Services */,

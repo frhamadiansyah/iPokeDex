@@ -44,7 +44,33 @@ class HomeViewModelTests: XCTestCase {
         wait(for: [expectation], timeout: 5)
     }
     
-    func testNoDetailReceived() throws {
+    func testFilteredList() throws {
+        let sut = HomeViewModel(service: MockService(mockDataType: .pokemonList))
+
+        sut.loadItems()
+        
+        sut.searchKeyword = "bulbasaur"
+        let expectation = expectation(description: "Details Loaded")
+        
+        sut.$filteredPoke.first().sink { pokemon in
+            print(sut.poke.count)
+
+            XCTAssert(!sut.poke.isEmpty, "Empty list")
+                
+            XCTAssert(!sut.filteredPoke.isEmpty, "Empty list")
+                
+            XCTAssert(sut.poke.count == 1126, "Count different, expect 1126, instead got \(sut.poke.count)")
+                
+            XCTAssert(sut.filteredPoke.count == 1, "Count different, expect unfiltered 1126, instead got \(sut.poke.count)")
+                            
+            expectation.fulfill()
+            
+        }
+
+        wait(for: [expectation], timeout: 5)
+    }
+    
+    func testNoListReceived() throws {
         let sut = HomeViewModel(service: MockService(mockDataType: .null))
         
         let expectation = expectation(description: "Error Throwed")
@@ -61,6 +87,7 @@ class HomeViewModelTests: XCTestCase {
         
         wait(for: [expectation], timeout: 5)
     }
+    
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.

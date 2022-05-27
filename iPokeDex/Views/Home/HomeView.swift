@@ -16,7 +16,7 @@ struct HomeView: View {
                     .searchable(text: $vm.searchKeyword)
             }
             .modifier(ErrorHandle(showError: $vm.showError, error: vm.error, completion: { }))
-            .navigationTitle("Home")
+            .navigationTitle("iPokédex")
         }
     }
 }
