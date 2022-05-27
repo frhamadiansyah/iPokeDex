@@ -11,21 +11,29 @@ struct PokeCollectionView: View {
     @ObservedObject var vm: HomeViewModel
     
     let columns = [
-            GridItem(.flexible()),
-            GridItem(.flexible())
-        ]
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {
-            LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(vm.filteredPoke) { poke in
-                    NavigationLink {
-                        DescriptionView(poke)
-                    } label: {
-                        PokeCollectionCell(poke: poke)
+            if !vm.filteredPoke.isEmpty {
+                LazyVGrid(columns: columns, spacing: 20) {
+                    
+                    ForEach(vm.filteredPoke) { poke in
+                        NavigationLink {
+                            DescriptionView(poke)
+                        } label: {
+                            PokeCollectionCell(poke: poke)
+                        }
+                        
                     }
-                
+                    
                 }
+            } else {
+                Text("No Pokemon Found")
+                    .padding()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
     }
