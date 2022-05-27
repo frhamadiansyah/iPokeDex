@@ -41,17 +41,16 @@ struct Pokemon: Decodable, Identifiable {
         spriteUrl = "\(spriteBaseUrl)\(pokemonId).png"
         
     }
+    
+    // for dummy model
+    init() {
+        id = "1"
+        name = "Bulbasaur"
+        url = "https://pokeapi.co/api/v2/pokemon/1/"
+        pokemonId = "1"
+        spriteUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+    }
         
-}
-
-struct PokeType: Decodable {
-    let slot: String
-    let type: NameUrl
-}
-
-struct NameUrl: Decodable {
-    let name: String
-    let url: String
 }
 
 

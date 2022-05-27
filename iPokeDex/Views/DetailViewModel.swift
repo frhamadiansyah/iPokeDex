@@ -15,10 +15,17 @@ class DetailViewModel: ObservableObject {
     
     @Published var model: PokemonDetail?
     
+    @Published var poke: Pokemon
+    
     @Published var showError = false
     @Published var error: Error?
     
-    init(service: Requestable = APIService()) {
+//    init(service: Requestable = APIService()) {
+//        self.service = service
+//    }
+    
+    init(_ poke: Pokemon, service: Requestable = APIService()) {
+        self.poke = poke
         self.service = service
     }
     

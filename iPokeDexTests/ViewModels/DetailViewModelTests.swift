@@ -20,7 +20,7 @@ class DetailViewModelTests: XCTestCase {
     }
 
     func testLoadDetails() throws {
-        let sut = DetailViewModel(service: MockService(mockDataType: .pokemonDetail))
+        let sut = DetailViewModel(Pokemon(), service: MockService(mockDataType: .pokemonDetail))
         let urlString = "https://pokeapi.co/api/v2/pokemon/1/"
         
         let expectation = expectation(description: "Details Loaded")
@@ -32,6 +32,11 @@ class DetailViewModelTests: XCTestCase {
                 let result = model.name
                 
                 XCTAssert(expectedResult == result, "Expected \(expectedResult), but got \(result) instead")
+                
+                let expectedType: [PokemonType] = [.grass, .poison]
+                let resultType = model.types
+                XCTAssert(expectedType == resultType, "Expected \(expectedType), but got \(resultType) instead")
+                
                 expectation.fulfill()
             } else {
                 XCTFail("Result nil")
@@ -42,7 +47,7 @@ class DetailViewModelTests: XCTestCase {
     }
     
     func testNoDetailReceived() throws {
-        let sut = DetailViewModel(service: MockService(mockDataType: .null))
+        let sut = DetailViewModel(Pokemon(), service: MockService(mockDataType: .null))
         let urlString = "https://pokeapi.co/api/v2/pokemon/1/"
         
         let expectation = expectation(description: "Error Throwed")

@@ -11,7 +11,8 @@ import SwiftUI
 struct iPokeDexApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+            HomeView()
         }
     }
 }
