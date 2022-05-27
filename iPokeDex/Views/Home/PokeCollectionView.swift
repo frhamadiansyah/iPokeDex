@@ -19,7 +19,6 @@ struct PokeCollectionView: View {
         ScrollView(.vertical, showsIndicators: true) {
             if !vm.filteredPoke.isEmpty {
                 LazyVGrid(columns: columns, spacing: 20) {
-                    
                     ForEach(vm.filteredPoke) { poke in
                         NavigationLink {
                             DescriptionView(poke)

@@ -12,12 +12,6 @@ let spriteBaseUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sp
 struct PokeResponse: Decodable {
     let results : [Pokemon]
     
-    // abilities
-//    let id: Int
-//    let name: String
-//    let height: Int
-//    let weight: Int
-    
 }
 
 struct Pokemon: Decodable, Identifiable {

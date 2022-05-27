@@ -35,6 +35,11 @@ class APIServiceTests: XCTestCase {
                 let result = response.results.first?.name
                 
                 XCTAssert(expectedResult == result, "Expected \(expectedResult), but got \(result) instead")
+                
+                let expectedId = "1"
+                let resultId = response.results.first?.id
+                
+                XCTAssert(expectedResult == result, "Expected \(expectedId), but got \(resultId) instead")
             }
 
     }
